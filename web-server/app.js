@@ -6,24 +6,28 @@ const forecast = require('../utilities/forecast')
 
 const address = process.argv[2]
 
-if(!address){
+if (!address) {
     console.log("Please provide the address")
-}else{
-    geocode(address,(error,{longitude,latitude,location}={})=>{
+} else {
+    geocode(address, (error, {
+        longitude,
+        latitude,
+        location
+    } = {}) => {
 
-        if(error){
-           return console.log(error);
+        if (error) {
+            return console.log(error);
         };
         // forecast(data.latitude,data.longitude,"Brakapn");
         // const {latitude,longitude} = data//I used destructuring here
-        forecast(latitude,longitude,(error,forecastData)=>{
-            
-            if(error){
+        forecast(latitude, longitude, (error, forecastData) => {
+
+            if (error) {
                 return console.log(error);
             }
             console.log(location);
             console.log(forecastData)
-    
+
         })
     })
 }
@@ -83,7 +87,3 @@ if(!address){
 
 //     });
 // }
-
-
-
-
