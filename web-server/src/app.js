@@ -26,7 +26,7 @@ hbs.registerPartials(partialsPath)
 
 //setup static directory to serve
 app.use(express.static(publicDirectoryPath)); //we use this when 
-//we are handling static html files
+//we are handling static html files(in public folder)
 // app.set('views', __dirname + '/views');
 
 
@@ -69,6 +69,23 @@ app.get('/about', (req, res) => {
 // app.get('/weather',(req,res)=>{
 //     res.send("view Weather page")
 // })
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        nam: 'Zakhele',
+        errorMessage: 'Help article not found'
+
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Zakhele',
+        errorMessage: 'Page not found'
+    })
+})
 
 app.listen(3000, () => {
     console.log('Server is up on port 3000');
