@@ -1,8 +1,6 @@
 const path = require('path')
 const express = require('express');
-// const {
-//     resolve
-// } = require('path');
+
 const hbs = require('hbs');
 
 
@@ -34,6 +32,13 @@ app.get('', (req, res) => { //we use this when we're handling dynamic html files
     res.render('index', {
         title: 'WeatherApp',
         name: 'Zakhele Madi'
+    })
+})
+
+app.get('/products', (req, res) => {
+    console.log(req.query);
+    res.send({
+        product: []
     })
 })
 
